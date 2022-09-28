@@ -56,7 +56,7 @@ func (ch *clientHandle) clientConfig() {
 	fmt.Printf("enter your name :: ")
 	Name, err := reader.ReadString('\n')
 	if err != nil {
-		log.Fatalf("failed to read from console :: ", err)
+		log.Fatalf("failed to read from console :: %v", err)
 	}
 
 	ch.clientName = strings.Trim(Name, "\r\n")
