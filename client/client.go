@@ -91,6 +91,6 @@ func (ch *clientHandle) receiveMessage() {
 		if err != nil {
 			log.Printf("Error in receiving message from server :: %v", err)
 		}
-		fmt.Printf("%s : %s", mssg.Name, mssg.Body)
+		fmt.Printf("%s : %s \n", mssg.Name, mssg.Body)
 	}
 }
