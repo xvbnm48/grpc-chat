@@ -10,6 +10,7 @@ import (
 
 	"github.com/xvbnm48/grpc-chat/chatserver/chatserver"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 func main() {
@@ -24,7 +25,7 @@ func main() {
 
 	log.Println("connecting: " + serverID)
 
-	conn, err := grpc.Dial(serverID, grpc.WithInsecure())
+	conn, err := grpc.Dial(serverID, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Printf("error connection to server: %v", err)
 	}
@@ -68,7 +69,7 @@ func (ch *clientHandle) sendMessage() {
 		reader := bufio.NewReader(os.Stdin)
 		ClientMessage, err := reader.ReadString('\n')
 		if err != nil {
-			log.Fatalf("failed to read from console :: ", err)
+			log.Fatalf("failed to read from console ::%v ", err)
 		}
 
 		ClientMessage = strings.Trim(ClientMessage, "\r\n")
